@@ -12,6 +12,8 @@ jobs:
       - checkout:
           path: ~/rails-docker-usa
       - ruby/install-deps
+    environment:
+      RAILS_MASTER_KEY: $RAILS_MASTER_KEY
 
   test:
     docker:
