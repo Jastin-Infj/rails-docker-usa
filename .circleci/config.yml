@@ -5,7 +5,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7
+      - image: cimg/ruby:2.7
     working_directory: ~/rails-docker-usa/src
     steps:
       - checkout:
@@ -14,7 +14,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/ruby:2.7
+      - image: cimg/ruby:2.7
       - image: circleci/mysql:5.5
         environment:
           MYSQL_ROOT_PASSWORD: password
