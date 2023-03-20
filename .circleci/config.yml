@@ -10,16 +10,17 @@ jobs:
     steps:
       - checkout:
           path: ~/rails-docker-usa
-      - ruby/install-deps #Using bundle command
+      - ruby/install:
+          version: '2.7' #Using bundle command
 
   test:
     docker:
       - image: circleci/ruby:2.7
       - image: circleci/mysql:5.5 #circleci mysql version
-      environment:
-        MYSQL_ROOT_PASSWORD: password
-        MYSQL_DATABASE: app_test
-        MYSQL_USER: root
+        environment:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: app_test
+          MYSQL_USER: root
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
@@ -29,7 +30,8 @@ jobs:
     steps:
       - checkout:
           path: ~/rails-docker-usa
-      - ruby/install-deps
+      - ruby/install:
+          version: '2.7'
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
