@@ -27,6 +27,9 @@ src/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
 src/config/master.key
+src/config/credentials/development.key
+src/config/credentials/production.key
+src/config/secrets.yml
 
 src/public/packs
 src/public/packs-test

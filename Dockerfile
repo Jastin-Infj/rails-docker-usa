@@ -1,7 +1,9 @@
 FROM ruby:2.7
-# ENV RAILS_ENV=production
+ENV RAILS_ENV=production
 
+# CircleCIで設定した環境変数の値を持った変数
 ARG RAILS_MASTER_KEY
+# ARGで機能した変数RAILS_MASTER_KEY コンテナ内
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 # nodejsのダウンロード
@@ -26,9 +28,6 @@ RUN bundle config --local set path 'vendor/bundle' \
 # vim
 RUN apt-get install -y vim
 
-# credentials 本番環境を可能にする
-RUN bundle exec rails credentials:edit
-
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
 
@@ -41,4 +40,3 @@ CMD ["sh", "/start.sh","mysqld","/my.cnf"]
 # Ruby コマンド
 RUN bundle exec rails webpacker:install
 RUN bundle exec rails webpacker:compile
-
