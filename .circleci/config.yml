@@ -11,7 +11,6 @@ jobs:
     steps:
       - checkout:
           path: ~/rails-docker-usa
-          extra-build-args: "--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}"
       - ruby/install-deps
 
   test:
